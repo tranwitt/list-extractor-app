@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Json Extractor</string>
+    <string name="json_extracted_data">Json Extracted Data</string>
+    <string name="Back">Back</string>
+</resources>

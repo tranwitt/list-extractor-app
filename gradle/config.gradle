@@ -1,0 +1,11 @@
+ext {
+    config = [
+            versionCode     : 1,
+            versionName     : "1",
+            toolsVersion    : '34.0.0',
+            sdkVersion      : 34,
+            minSdkVersion   : 34,
+            namespace       : "com.tranwitt.extractor",
+            artifact        : "Json Extractor",
+    ]
+}

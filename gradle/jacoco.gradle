@@ -1,0 +1,24 @@
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = '0.8.8'
+}
+
+tasks.register('jacocoTestReport', JacocoReport) {
+    dependsOn 'testDebugUnitTest'
+    group = 'Reporting'
+    description = 'Generate Jacoco coverage reports.'
+    reports {
+        xml.getRequired().set(true)
+        html.getRequired().set(true)
+    }
+    def buildDir = layout.buildDirectory.get()
+    executionData.from = ["${buildDir}/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"]
+    sourceDirectories.from = ["${projectDir}/src/main/java"]
+    classDirectories.from = fileTree(
+            dir: "${buildDir}/intermediates/javac/debug/classes/",
+            excludes: ['**/IU*', '**/BuildConfig.class', '**/*_Impl*.*']
+    )
+    doLast {
+        println "Unit-test coverage report generated at folder: ${buildDir}/reports/jacoco/jacocoTestReport/"
+    }
+}
