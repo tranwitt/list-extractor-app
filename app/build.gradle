@@ -22,24 +22,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        platform {
-            storeFile file('certs/platform.keystore')
-            storePassword 'android'
-            keyAlias 'platform'
-            keyPassword 'android'
-        }
-    }
-
-
     buildTypes {
         release {
-            signingConfig signingConfigs.platform
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.platform
             debuggable true
             minifyEnabled false
             testCoverageEnabled true
